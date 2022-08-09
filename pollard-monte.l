@@ -44,14 +44,14 @@
       (make
          (loop
             (setq N (/ N (link (pollard-brent N))))
-            (T (or (=1 N)(isprime N 8))) )
+            (T (or (=1 N) (isprime N 8))) )
          (link N) ) ) )
 # (let (N 838142784433443433343434303443243443434343323243432 L (factors N))
    # (test N (apply * L)) )
 
 
-(println (pollard-brent 47))
-(println (isprime 47))
+# (println (factors 30984390843))
+(println (factors 1000))
 
 (msg 'ok)
 (bye)
