@@ -41,9 +41,7 @@
                (setq
                   YS (g YS)
                   G (gcd (abs (- X YS)) N) ) ) )
-         (if (== G N)
-            NIL
-            G ) ) ) )
+         G ) ) )
 (de factors (N)
    (sort
       (make
