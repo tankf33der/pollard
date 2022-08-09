@@ -6,6 +6,7 @@
    (abs A) )
 (de g (X)
    (% (inc (* X X)) N) )
+# Pollard Rho, wikipedia
 (de pollard (N)
    (let (X 2  Y 2  D 1)
       (while (=1 D)
