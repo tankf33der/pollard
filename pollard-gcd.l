@@ -22,7 +22,7 @@
                   (throw 'break)
                   (one Z) ) ) ) )
       (if (== D N) 0 D) ) )
-(bench (println (pollard-gcd 340282366920938463463374607431768211457)))
+# (bench (println (pollard-gcd 340282366920938463463374607431768211457)))
 
 (msg 'ok)
 (bye)
