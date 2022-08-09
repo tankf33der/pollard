@@ -1,8 +1,7 @@
-# Generate long random number in 2:N-1
-(de longRand (N)
+(de longRand (A B)
    (max
-      2
-      (% (in "/dev/urandom" (rd (size N))) N) ) )
+      A
+      (% (in "/dev/urandom" (rd (size B))) B) ) )
 (de **Mod (X Y N)
    (let M 1
       (loop
@@ -22,7 +21,7 @@
                (setq Q (>> 1 Q)  K (inc K)) )
             (do P
                (setq X
-                  (**Mod (longRand N1) Q N) )
+                  (**Mod (longRand 2 N1) Q N) )
                (NIL
                   (or
                      (=1 X)

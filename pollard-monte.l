@@ -1,5 +1,4 @@
 (load "isprime.l")
-
 (de gcd (A B)
    (until (=0 B)
       (let M (% A B)
@@ -10,22 +9,20 @@
 (de pollard-brent (N)
    (let
       (A (dec N)
-         Y (rand 1 (min A 1000000000000000000))
-         C (rand 1 (min A 1000000000000000000))
-         M (rand 1 (min A 1000000000000000000))
+         Y (longRand 1 A)
+         C (longRand 1 A)
+         M (longRand 1 A)
          G 1
          R 1
          Q 1 )
       (ifn (bit? 1 N)
          2
-         (loop
-            (NIL (=1 G))
+         (while (=1 G)
             (setq X Y)
             (do R
                (setq Y (g Y)) )
             (zero K)
-            (loop
-               (NIL (and (> R K) (=1 G)))
+            (while (and (> R K) (=1 G))
                (setq YS Y)
                (do (min M (- R K))
                   (setq
@@ -37,7 +34,7 @@
             (setq R (* R 2)) )
          (when (== G N)
             (loop
-               (NIL (> G 1))
+               (NIL (> 1 G))
                (setq
                   YS (g YS)
                   G (gcd (abs (- X YS)) N) ) ) )
@@ -47,9 +44,14 @@
       (make
          (loop
             (setq N (/ N (link (pollard-brent N))))
-            (T (isprime N 8)) )
+            (T (or (=1 N)(isprime N 8))) )
          (link N) ) ) )
-(let (N 838142784433443433343434303443243443434343323243432 L (factors N))
-   (test N (apply * L)) )
+# (let (N 838142784433443433343434303443243443434343323243432 L (factors N))
+   # (test N (apply * L)) )
+
+
+(println (pollard-brent 47))
+(println (isprime 47))
+
 (msg 'ok)
 (bye)
