@@ -22,7 +22,9 @@
                   (throw 'break)
                   (one Z) ) ) ) )
       (if (== D N) 0 D) ) )
-# (bench (println (pollard-gcd 340282366920938463463374607431768211457)))
+
+# FAIL ON 124, STOP
+(println (pollard-gcd 124))
 
 (msg 'ok)
 (bye)
