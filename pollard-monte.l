@@ -7,7 +7,6 @@
 (de g (A)
    (% (+ (% (* A A) N) C) N) )
 (de pollard-brent (N)
-   # (println 'brent N (isprime N))
    (cond
       ((not (bit? 1 N)) 2)
       ((isprime N) N)
