@@ -7,38 +7,41 @@
 (de g (A)
    (% (+ (% (* A A) N) C) N) )
 (de pollard-brent (N)
-   (let
-      (A (dec N)
-         Y (longRand 1 A)
-         C (longRand 1 A)
-         M (longRand 1 A)
-         G 1
-         R 1
-         Q 1 )
-      (ifn (bit? 1 N)
-         2
-         (while (=1 G)
-            (setq X Y)
-            (do R
-               (setq Y (g Y)) )
-            (zero K)
-            (while (and (> R K) (=1 G))
-               (setq YS Y)
-               (do (min M (- R K))
+   # (println 'brent N (isprime N))
+   (cond
+      ((not (bit? 1 N)) 2)
+      ((isprime N) N)
+      (T
+         (let
+            (A (dec N)
+               Y (longRand 1 A)
+               C (longRand 1 A)
+               M (longRand 1 A)
+               G 1
+               R 1
+               Q 1 )
+            (while (=1 G)
+               (setq X Y)
+               (do R
+                  (setq Y (g Y)) )
+               (zero K)
+               (while (and (> R K) (=1 G))
+                  (setq YS Y)
+                  (do (min M (- R K))
+                     (setq
+                        Y (g Y)
+                        Q (% (* Q (abs (- X Y))) N) ) )
                   (setq
-                     Y (g Y)
-                     Q (% (* Q (abs (- X Y))) N) ) )
-               (setq
-                  G (gcd Q N)
-                  K (+ K M) ) )
-            (setq R (* R 2)) )
-         (when (== G N)
-            (loop
-               (NIL (> 1 G))
-               (setq
-                  YS (g YS)
-                  G (gcd (abs (- X YS)) N) ) ) )
-         G ) ) )
+                     G (gcd Q N)
+                     K (+ K M) ) )
+               (setq R (* R 2)) )
+            (when (== G N)
+               (loop
+                  (NIL (> 1 G))
+                  (setq
+                     YS (g YS)
+                     G (gcd (abs (- X YS)) N) ) ) )
+            G ) ) ) )
 (de factors (N)
    (sort
       (make

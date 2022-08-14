@@ -1,8 +1,6 @@
 (load "pollard-monte.l")
 (seed (in "/dev/urandom" (rd 8)))
 (de r (B)
-(do 10
-   (at (0 . 10) (prin ".") (flush))
    (max 2 (in "/dev/urandom" (rd B))) )
 (do 100000
    (at (0 . 10000) (prin ".") (flush))
@@ -17,7 +15,6 @@
                (until (eol)
                   (link (format (till " \n")))
                   (from " ") ) ) ) )
-      (println 'B B 'C C)
       (test A B) ) )
 (msg 'ok)
 (bye)
