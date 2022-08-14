@@ -6,7 +6,7 @@
    (do 1000000
       (at (0 . 10000) (prin ".") (flush))
       (let
-         (N (r (rand 1 7))
+         (N (r (rand 1 8))
             A (factors N)
             C (list 'factor N)
             B
